@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Conecta: Marketing, saúde mental e direitos nas redes sociais — Projeto parcial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--b:#0098d8;--bt:#0885c0;--bd:#0a5c8a;--ice:#eaf6fd;--sky:#bfe6f6;--ink:#14293b;--mute:#4d6a80;--line:#cfe7f5;--serif:"Source Serif 4",Georgia,"Times New Roman",serif;--sans:"Source Sans 3",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{font:clamp(15px,1.45vw,19px)/1.6 var(--sans);color:var(--ink);overflow:hidden;background:linear-gradient(160deg,#fff 0%,var(--ice) 55%,#d3ecf9 100%)}
+#net{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+body::before,body::after{content:"";position:fixed;border-radius:50%;filter:blur(70px);z-index:0;pointer-events:none}
+body::before{width:46vmax;height:46vmax;right:-14vmax;top:-18vmax;background:rgba(0,152,216,.22);animation:fl 18s ease-in-out infinite alternate}
+body::after{width:38vmax;height:38vmax;left:-14vmax;bottom:-16vmax;background:rgba(124,203,239,.38);animation:fl 22s ease-in-out infinite alternate-reverse}
+@keyframes fl{to{transform:translate(6vmax,5vmax) scale(1.12)}}
+.s{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;padding:clamp(20px,5vh,56px) clamp(18px,7vw,110px) 84px;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .4s}
+.s.on{opacity:1;visibility:visible}
+.in{position:relative;margin:auto;width:100%;max-width:1040px}
+h1,h2{font-family:var(--serif);font-weight:600;line-height:1.2;margin:0 0 .6em;letter-spacing:-.01em}
+h1{font-size:clamp(26px,min(4.6vw,6vh),52px)}
+h2{font-size:clamp(23px,3.4vw,40px);border-left:5px solid var(--b);padding-left:.55em}
+h3{font:600 1.05em var(--serif);margin:0 0 .4em;color:var(--bd)}
+p{margin:0 0 .8em;max-width:72ch}
+.sub{color:var(--mute);font-size:1.05em}
+.cover{text-align:center}
+.cover .in{display:flex;flex-direction:column;align-items:center}
+.cover .sub{margin-bottom:.5em}
+.logo{width:clamp(100px,min(20vw,24vh),190px);aspect-ratio:1;height:auto;margin-bottom:.2em}
+.on .logo{animation:pop .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes pop{from{opacity:0;transform:scale(.8) rotate(-4deg)}}
+.inst{color:var(--mute);margin:0 0 .8em}
+.names{list-style:none;padding:0;margin:.8em auto .6em;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:.1em 16px;font-size:.88em;width:100%;max-width:980px}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(12px,2vw,24px)}
+.box{background:rgba(255,255,255,.82);border-left:4px solid var(--b);padding:14px 18px;backdrop-filter:blur(4px)}
+.box p{margin:0}
+.pn{background:rgba(255,255,255,.86);border:1px solid var(--line);border-radius:10px;padding:14px 18px;backdrop-filter:blur(4px)}
+.k b{display:block;font:600 clamp(32px,5vw,56px)/1.05 var(--serif);color:var(--bt)}
+.k span{display:block;font-size:.95em}
+ul.l{margin:0;padding-left:1.1em}
+ul.l li{margin:.35em 0}
+ol.l{margin:0;padding-left:1.3em}
+ol.l li{margin:.6em 0}
+.note{border-top:1px solid var(--line);margin-top:1.2em;padding-top:.8em;color:var(--mute);font-size:.95em}
+.ref{font-size:.95em;margin:.5em 0;padding-left:1.6em;text-indent:-1.6em;max-width:80ch}
+.b{display:grid;grid-template-columns:minmax(110px,46%) 1fr 54px;gap:3px 10px;align-items:center;margin:.45em 0;font-size:.88em;line-height:1.3}
+.b i{height:12px;background:var(--line);border-radius:6px;position:relative;overflow:hidden}
+.b i::after{content:"";position:absolute;inset:0 auto 0 0;width:calc(var(--v)*1%);background:linear-gradient(90deg,var(--bd),var(--b));border-radius:6px}
+.b em{font-style:normal;font-weight:600;text-align:right;color:var(--bd)}
+.dn{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center}
+.d{width:clamp(100px,11vw,140px)}
+.d circle{fill:none;stroke-width:16;transform:rotate(-90deg);transform-origin:50px 50px}
+.d text{font:600 15px var(--serif);fill:var(--ink)}
+.lg{list-style:none;margin:0;padding:0;font-size:.86em;line-height:1.3}
+.lg li{margin:.35em 0;padding-left:16px;position:relative}
+.lg li::before{content:"";position:absolute;left:0;top:.25em;width:10px;height:10px;border-radius:3px;background:var(--c)}
+.lg b{color:var(--bd);white-space:nowrap}
+.big{font:600 clamp(70px,16vw,170px)/1 var(--serif);letter-spacing:-.03em}
+.lead{font-size:1.25em;margin:.2em auto 1.4em}
+.dark{background:linear-gradient(135deg,#0a4f78,#0a7db5);color:#fff}
+.dark::before{content:"";position:absolute;width:60vmax;height:60vmax;border-radius:50%;left:-15vmax;top:-22vmax;background:radial-gradient(circle,rgba(255,255,255,.22),transparent 65%);animation:fl 14s ease-in-out infinite alternate;pointer-events:none}
+.dark h2{border-color:#fff}
+.dark h3{color:var(--sky)}
+.dark .box{background:rgba(255,255,255,.13);border-color:#fff}
+.dark .k b{color:#fff}
+.dark .sub{color:#d9f1fb}
+.on .a{animation:up .6s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--d,0)*80ms)}
+@keyframes up{from{opacity:0;transform:translateY(16px)}}
+.on .b i::after{animation:gr 1s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--d,0)*80ms + .35s)}
+@keyframes gr{from{width:0}}
+.on .d circle{animation:dr 1.1s cubic-bezier(.3,.7,.2,1) both;animation-delay:calc(var(--d,0)*110ms + .25s)}
+@keyframes dr{from{stroke-dasharray:0 251.33}}
+footer{position:fixed;left:0;right:0;bottom:0;height:60px;padding:0 clamp(14px,4vw,40px) env(safe-area-inset-bottom,0);display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border-top:1px solid var(--line);font-size:.85em;color:var(--mute);z-index:5}
+#bar{position:absolute;left:0;top:-1px;height:3px;background:var(--b);transition:width .4s}
+nav{display:flex;align-items:center;gap:14px}
+button{width:42px;height:42px;border-radius:50%;border:0;background:var(--b);color:#fff;font:600 24px/1 var(--sans);cursor:pointer;padding:0 0 3px;transition:background .2s,transform .2s}
+button:hover:not(:disabled){background:var(--bd);transform:scale(1.07)}
+button:disabled{background:var(--sky);cursor:default}
+button:focus-visible{outline:3px solid var(--bd);outline-offset:2px}
+@media(max-width:560px){.b{grid-template-columns:1fr 50px}.b span{grid-column:1/-1}.s{padding-bottom:80px}#t{display:none}}
+@media(prefers-reduced-motion:reduce){*,::before,::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="lg" viewBox="0 0 215 215"><path fill="#111" fill-rule="evenodd" d="M104.33 83.49 103.32 83.58 101.73 83.51 99.91 83.34 96.67 82.91 92.29 82.62 91.14 82.44 88.97 81.95 86.94 81.64 86.28 81.47 85.83 81.26 85.55 81.03 85.28 80.64 85.09 80.17 84.85 78.91 84.76 76.83 84.80 73.70 85.16 68.90 85.35 67.27 85.69 65.44 86.45 62.04 87.55 58.47 88.48 56.07 89.82 53.23 90.82 51.40 92.72 48.47 94.30 46.38 95.94 44.69 97.01 43.76 97.96 43.04 99.90 41.81 102.40 40.65 103.17 40.43 103.85 40.35 104.63 40.47 104.95 40.64 105.20 40.89 105.49 41.60 105.60 43.00 105.60 80.99 105.51 82.09 105.32 82.74 104.97 83.20 104.45 83.46ZM113.37 83.52 111.35 83.61 110.59 83.51 110.09 83.33 109.80 83.12 109.52 82.73 109.36 82.22 109.27 81.48 109.23 42.68 109.34 41.60 109.57 40.99 109.98 40.57 110.32 40.43 110.71 40.36 111.40 40.38 112.18 40.57 114.50 41.58 116.29 42.63 117.89 43.86 119.73 45.52 120.97 46.94 122.39 48.86 124.25 51.83 125.27 53.64 126.32 55.93 127.22 58.36 128.30 61.78 129.17 65.57 129.46 67.13 129.64 68.77 129.97 73.11 130.06 76.83 129.94 79.20 129.81 79.90 129.60 80.52 129.27 81.02 128.90 81.32 128.04 81.62 126.02 81.94 122.99 82.57 118.30 82.89 113.51 83.51ZM79.81 79.76 79.05 79.80 77.83 79.59 73.04 78.21 71.24 77.51 70.76 77.16 70.47 76.78 70.15 75.93 70.02 74.78 70.03 73.28 70.18 70.75 70.52 68.44 71.52 64.77 73.46 59.87 74.65 57.56 75.58 56.00 76.79 54.20 77.77 52.86 78.92 51.50 80.69 49.61 82.66 47.75 84.03 46.61 86.43 44.84 88.16 43.74 89.81 42.89 90.89 42.51 91.57 42.50 91.78 42.63 91.86 42.86 91.82 43.15 91.63 43.55 88.51 47.93 86.84 50.76 85.79 52.87 84.58 55.66 83.08 60.16 81.99 64.57 81.76 65.85 81.46 68.71 80.86 72.94 80.77 74.67 80.74 77.82 80.67 78.59 80.42 79.31 80.20 79.56 79.91 79.72ZM135.86 79.81 135.22 79.79 134.77 79.63 134.43 79.32 134.18 78.73 134.07 77.82 134.03 74.52 133.92 72.67 133.37 68.71 132.99 65.26 131.93 60.82 130.92 57.66 129.92 54.84 129.15 53.10 128.04 50.88 126.17 47.75 123.18 43.43 123.01 42.85 123.09 42.62 123.30 42.49 123.61 42.45 124.09 42.52 125.16 42.93 127.09 43.99 129.39 45.52 130.92 46.66 132.19 47.73 135.36 50.89 136.99 52.76 137.86 53.89 139.14 55.77 139.96 57.12 141.11 59.31 142.11 61.47 143.16 64.26 144.24 68.17 144.61 70.31 144.77 72.66 144.83 74.66 144.73 75.81 144.49 76.58 144.24 76.99 143.90 77.31 142.90 77.81 137.92 79.33 135.98 79.79ZM84.00 97.85 83.48 97.86 82.74 97.67 76.20 95.38 75.34 94.91 74.56 94.19 73.96 93.29 73.39 92.19 72.54 90.22 71.50 87.42 70.74 84.68 70.55 83.73 70.52 83.18 70.57 82.78 70.71 82.44 70.92 82.19 71.32 81.98 71.79 81.93 73.09 82.16 75.78 82.97 78.06 83.53 79.95 84.14 80.76 84.49 81.21 84.88 81.45 85.30 81.62 85.80 82.00 87.75 83.02 91.89 84.42 96.32 84.50 96.86 84.47 97.24 84.31 97.64 84.09 97.82ZM131.10 97.92 130.72 97.79 130.45 97.46 130.34 96.98 130.40 96.31 131.90 91.48 133.26 85.68 133.63 84.89 134.18 84.43 135.00 84.08 136.76 83.51 139.04 82.95 141.46 82.21 142.39 82.00 143.03 81.93 143.50 81.99 143.89 82.19 144.11 82.45 144.24 82.78 144.27 83.56 143.34 87.42 142.21 90.46 141.41 92.32 140.90 93.32 140.30 94.22 139.63 94.88 138.77 95.36 134.94 96.69 132.28 97.69 131.67 97.87 131.21 97.92ZM104.70 108.40 104.03 108.34 103.36 108.05 99.33 105.59 92.44 101.98 91.54 101.38 90.95 100.80 90.41 100.01 89.43 98.16 88.39 95.86 87.34 93.07 86.47 90.12 86.05 88.04 85.99 87.32 86.04 86.76 86.21 86.29 86.42 86.02 86.95 85.75 87.77 85.69 96.10 86.82 98.70 87.03 103.34 87.23 104.45 87.46 104.88 87.70 105.13 87.95 105.32 88.26 105.48 88.77 105.60 90.01 105.57 97.50 105.63 106.16 105.57 107.12 105.45 107.68 105.16 108.18 104.81 108.38ZM110.83 108.30 110.21 108.32 109.88 108.21 109.69 108.06 109.39 107.53 109.26 106.65 109.29 101.50 109.23 90.17 109.35 88.77 109.50 88.25 109.68 87.93 109.93 87.68 110.36 87.44 111.45 87.21 115.65 87.05 117.96 86.88 124.65 86.06 127.06 85.68 127.76 85.70 128.34 85.92 128.59 86.17 128.75 86.50 128.84 86.89 128.86 87.47 128.62 89.03 128.12 91.03 127.25 93.84 126.32 96.08 125.07 98.82 124.41 99.99 123.94 100.69 123.28 101.37 122.40 101.98 115.64 105.56 111.69 107.93 110.94 108.28ZM71.85 153.60 71.26 153.58 70.70 153.37 70.26 152.99 69.99 152.47 69.92 151.88 70.08 151.31 70.44 150.85 70.97 150.56 71.64 150.48 72.28 150.64 72.77 150.97 73.15 151.56 73.23 152.26 73.05 152.82 72.59 153.32 71.97 153.58ZM144.85 169.60 144.37 169.61 143.74 169.50 143.28 169.30 142.90 169.02 142.61 168.64 142.40 168.19 142.17 166.94 142.09 163.17 142.16 153.21 142.27 152.50 142.50 151.92 142.92 151.53 143.37 151.40 143.94 151.51 144.29 151.80 144.55 152.36 144.69 153.21 144.77 164.81 144.86 165.56 145.02 166.23 145.79 167.94 145.92 168.52 145.87 168.86 145.65 169.23 145.39 169.43 144.97 169.58ZM157.01 169.66 155.98 169.76 155.02 169.75 154.12 169.64 153.32 169.43 152.49 169.10 151.65 168.60 150.99 168.10 150.41 167.51 149.85 166.73 149.51 166.07 149.23 165.19 148.96 163.96 148.86 163.11 148.86 162.24 148.97 161.38 149.18 160.43 149.62 159.21 150.36 158.11 150.83 157.58 151.45 157.03 152.48 156.40 153.93 155.85 155.04 155.62 156.29 155.62 158.37 155.95 158.88 155.91 159.31 155.71 159.64 155.38 159.90 154.81 160.23 152.63 160.50 151.92 160.73 151.65 161.03 151.47 161.39 151.37 161.89 151.40 162.23 151.53 162.58 151.84 162.81 152.27 162.95 152.93 163.01 154.01 163.02 163.17 163.07 164.81 163.17 165.57 163.34 166.24 164.25 167.98 164.31 168.36 164.27 168.73 164.13 169.06 163.98 169.23 163.66 169.42 163.27 169.52 162.85 169.55 162.28 169.48 160.66 168.96 160.02 168.88 159.38 168.98 158.02 169.43 157.14 169.64ZM42.19 169.69 40.83 169.77 39.21 169.70 38.06 169.52 37.06 169.19 35.87 168.55 35.02 167.89 34.34 167.08 33.65 165.93 33.27 164.81 33.11 163.48 33.03 155.17 33.08 154.03 33.23 153.15 33.49 152.58 33.91 152.20 34.47 152.09 35.00 152.27 35.38 152.70 35.62 153.45 35.72 154.84 35.79 162.31 35.94 163.49 36.26 164.49 36.53 165.05 36.94 165.64 37.35 166.07 37.82 166.44 38.86 166.89 40.18 167.09 41.58 167.00 42.25 166.84 42.85 166.60 43.39 166.31 43.86 165.94 44.26 165.51 44.59 165.00 44.99 163.91 45.21 162.31 45.27 160.50 45.26 154.67 45.32 153.73 45.43 153.18 45.63 152.71 45.85 152.44 46.13 152.25 46.57 152.12 46.90 152.14 47.32 152.29 47.59 152.50 47.86 152.88 48.10 153.63 48.20 154.68 48.20 160.83 48.01 163.59 47.84 164.58 47.59 165.50 47.30 166.22 46.88 166.96 46.30 167.71 45.78 168.20 44.98 168.73 44.10 169.19 43.25 169.48 42.33 169.67ZM93.14 169.48 92.62 169.56 92.06 169.52 91.53 169.39 90.97 169.11 90.19 168.39 88.93 166.82 88.57 166.51 88.15 166.26 87.10 165.96 85.70 165.85 82.71 165.82 81.97 165.90 81.31 166.06 80.75 166.33 80.30 166.71 79.94 167.19 79.14 168.55 78.55 169.12 78.01 169.35 77.55 169.38 77.13 169.25 76.82 168.94 76.69 168.47 76.76 167.83 77.71 165.29 82.60 153.85 83.16 152.91 83.48 152.56 83.78 152.36 84.13 152.22 84.52 152.16 85.29 152.29 85.90 152.68 86.41 153.34 88.21 157.21 91.70 165.22 92.34 166.24 93.49 167.42 93.82 167.91 93.95 168.37 93.89 168.83 93.65 169.20 93.26 169.44ZM64.68 169.43 64.12 169.39 63.72 169.18 63.44 168.82 63.23 168.20 63.10 166.66 63.07 161.85 62.93 160.81 62.69 160.06 62.26 159.32 61.58 158.67 60.70 158.22 59.81 158.06 58.89 158.15 57.94 158.53 57.20 159.12 56.63 159.88 56.30 160.72 56.10 161.87 56.02 163.50 55.99 167.10 55.81 168.38 55.46 169.04 54.99 169.35 54.64 169.42 54.28 169.40 53.95 169.28 53.67 169.07 53.46 168.79 53.32 168.44 53.17 167.46 53.13 161.50 53.05 160.04 52.89 159.19 52.36 157.74 52.23 157.12 52.32 156.53 52.57 156.15 52.98 155.92 53.62 155.85 55.44 156.31 56.47 156.36 57.31 156.23 59.28 155.70 60.02 155.62 60.79 155.64 61.77 155.82 62.86 156.22 63.62 156.63 64.25 157.16 64.97 158.11 65.40 159.01 65.67 160.08 65.82 161.60 65.87 166.16 65.78 167.89 65.67 168.43 65.47 168.88 65.18 169.21 64.79 169.40ZM99.01 169.44 98.41 169.44 97.86 169.21 97.55 168.86 97.33 168.24 97.23 167.16 97.17 160.39 97.02 159.40 96.42 157.53 96.38 157.02 96.48 156.53 96.83 156.08 97.15 155.93 97.53 155.85 98.19 155.91 99.61 156.28 100.32 156.33 101.15 156.22 103.08 155.71 103.78 155.70 104.29 155.81 104.81 156.10 105.07 156.43 105.14 156.90 104.95 157.25 104.38 157.63 102.70 158.12 101.91 158.49 101.22 159.14 100.88 159.63 100.67 160.08 100.45 160.87 100.33 162.05 100.28 166.99 100.21 167.94 100.08 168.49 99.85 168.92 99.53 169.23 99.12 169.42ZM120.21 169.42 119.66 169.36 119.26 169.14 118.96 168.79 118.73 168.20 118.61 166.99 118.57 161.86 118.43 160.82 118.19 160.06 117.75 159.33 117.07 158.68 116.18 158.24 115.28 158.06 114.37 158.14 113.54 158.45 112.86 158.95 112.28 159.70 111.94 160.52 111.76 161.53 111.68 167.13 111.50 168.42 111.36 168.77 111.15 169.06 110.88 169.27 110.55 169.39 110.19 169.42 109.83 169.36 109.52 169.21 109.26 168.99 108.92 168.33 108.77 167.47 108.73 161.34 108.62 159.78 108.38 158.87 107.66 157.61 107.49 157.08 107.53 156.67 107.81 156.21 108.28 155.90 108.97 155.78 109.57 155.88 111.03 156.36 111.94 156.43 112.72 156.29 114.76 155.67 115.51 155.59 116.29 155.62 117.29 155.80 118.39 156.19 119.14 156.61 119.85 157.23 120.49 158.09 121.08 159.34 121.34 160.41 121.46 161.99 121.53 166.16 121.43 168.04 121.30 168.55 121.07 168.97 120.73 169.26 120.32 169.41ZM137.08 169.59 136.36 169.52 134.69 169.08 134.01 169.02 133.34 169.11 131.90 169.48 130.92 169.65 129.67 169.72 128.59 169.65 127.65 169.43 126.95 169.13 126.28 168.64 125.70 168.05 125.38 167.54 125.09 166.83 124.91 166.04 124.87 165.36 124.93 164.67 125.14 163.89 125.46 163.21 125.82 162.74 126.26 162.35 126.97 161.88 127.53 161.61 128.16 161.40 129.28 161.21 131.79 161.15 132.74 160.98 133.18 160.77 133.44 160.54 133.61 160.26 133.69 159.95 133.59 159.29 133.22 158.70 132.56 158.19 131.70 157.88 130.98 157.78 130.21 157.79 129.36 157.94 127.71 158.45 127.18 158.49 126.70 158.38 126.38 158.10 126.28 157.70 126.45 157.17 126.84 156.75 127.71 156.29 129.23 155.81 130.37 155.62 131.62 155.63 132.89 155.87 134.50 156.42 135.33 156.92 136.09 157.66 136.70 158.71 137.12 159.97 137.28 161.34 137.30 164.32 137.37 165.40 137.56 166.19 138.20 167.55 138.35 168.20 138.30 168.73 138.09 169.16 137.73 169.44 137.19 169.58ZM176.18 169.66 174.66 169.78 173.06 169.70 171.82 169.43 170.78 168.97 169.58 168.17 168.59 167.16 167.75 165.84 167.31 164.61 167.11 163.15 167.17 161.42 167.50 160.09 168.07 158.98 168.93 157.85 170.12 156.87 171.21 156.30 172.85 155.77 174.18 155.58 175.43 155.64 176.79 155.96 178.34 156.58 179.43 157.32 180.36 158.23 181.11 159.30 181.48 160.27 181.70 161.87 181.66 163.93 181.41 165.33 180.97 166.38 180.13 167.55 179.15 168.40 177.78 169.20 177.07 169.46 176.31 169.64ZM71.68 169.42 71.35 169.42 71.02 169.34 70.73 169.17 70.50 168.91 70.23 168.20 70.13 166.99 70.10 159.83 70.16 157.89 70.29 157.20 70.57 156.66 70.92 156.37 71.36 156.25 71.93 156.36 72.22 156.55 72.44 156.82 72.74 157.67 72.85 158.86 72.86 166.16 72.80 167.74 72.67 168.42 72.47 168.87 72.18 169.21 71.79 169.40ZM86.20 163.55 86.50 163.38 86.74 163.14 86.98 162.57 87.01 161.89 86.80 160.96 86.14 159.28 85.58 158.33 85.26 158.00 84.97 157.82 84.65 157.75 84.32 157.80 83.94 158.03 83.63 158.38 83.20 159.11 82.77 160.02 82.45 160.86 82.24 161.63 82.18 162.17 82.25 162.69 82.39 163.03 82.62 163.30 82.92 163.50 83.43 163.68 84.82 163.78 85.58 163.72 86.09 163.59ZM157.26 167.10 158.07 166.81 158.80 166.38 159.31 165.90 159.78 165.20 160.13 164.38 160.33 163.42 160.36 162.37 160.23 161.51 159.94 160.65 159.51 159.90 158.97 159.28 158.32 158.76 157.54 158.37 156.75 158.17 156.02 158.13 155.15 158.23 154.27 158.52 153.53 158.95 152.90 159.49 152.40 160.15 152.04 160.95 151.80 161.90 151.75 162.99 151.86 163.88 152.10 164.65 152.51 165.40 153.04 166.04 153.70 166.55 154.49 166.93 155.27 167.14 156.16 167.22 157.14 167.13ZM175.46 167.13 176.28 166.86 177.13 166.38 177.74 165.82 178.25 165.17 178.65 164.40 178.91 163.51 178.99 162.67 178.87 161.70 178.58 160.83 178.11 159.98 177.57 159.35 176.83 158.76 176.04 158.38 175.24 158.18 174.35 158.13 173.48 158.23 172.72 158.47 171.96 158.88 171.34 159.42 170.75 160.16 170.35 160.94 170.09 161.82 170.01 162.67 170.11 163.65 170.34 164.41 170.73 165.18 171.31 165.94 171.93 166.49 172.68 166.90 173.45 167.13 174.33 167.23 175.33 167.15ZM131.59 167.77 132.17 167.57 132.81 167.22 133.34 166.75 133.69 166.28 133.95 165.72 134.07 165.12 134.04 164.63 133.84 164.06 133.58 163.67 133.23 163.35 132.80 163.12 132.18 162.93 131.49 162.86 130.78 162.89 129.96 163.05 129.35 163.27 128.92 163.51 128.56 163.81 128.26 164.18 128.03 164.60 127.90 165.09 127.88 165.48 127.93 165.87 128.09 166.34 128.34 166.75 128.65 167.10 129.48 167.61 129.98 167.77 130.52 167.86 131.47 167.80Z"/><path fill="#0098d8" fill-rule="evenodd" d="M108.19 136.85 106.99 136.94 105.89 136.88 104.78 136.64 103.68 136.24 102.19 135.40 99.60 133.65 96.75 132.17 94.37 130.72 90.08 128.67 86.84 127.24 83.83 125.58 81.92 124.83 78.02 123.73 75.75 123.17 71.51 121.57 68.72 120.69 65.14 120.10 61.84 119.42 58.74 118.51 54.75 118.00 53.59 117.66 52.70 117.22 51.94 116.48 51.68 116.07 51.42 115.50 50.82 113.26 50.52 111.25 50.50 110.04 50.65 106.67 50.47 102.65 50.50 100.73 50.62 99.54 50.81 98.56 51.09 97.68 51.43 97.02 51.82 96.57 52.33 96.25 53.06 95.99 53.89 95.86 55.08 95.86 59.47 96.12 60.98 96.27 62.49 96.60 64.13 97.29 65.39 97.70 66.95 98.13 69.12 98.63 71.15 99.26 74.64 100.11 77.15 100.60 78.08 100.84 79.25 101.33 80.57 102.18 81.23 102.52 82.21 102.87 84.44 103.48 85.42 103.83 87.39 104.69 90.05 106.20 91.39 106.86 94.64 108.11 95.62 108.63 97.92 110.17 101.07 111.68 102.36 112.39 105.19 114.40 106.24 114.83 107.32 114.97 108.01 114.91 108.82 114.74 109.72 114.47 110.31 114.22 110.91 113.83 112.14 112.72 112.82 112.23 113.58 111.83 115.68 110.92 116.71 110.29 118.85 108.77 120.84 107.75 123.30 106.72 125.49 105.90 126.74 105.32 128.23 104.48 129.38 103.97 132.26 103.01 135.49 101.57 137.99 100.58 141.10 99.68 143.33 99.25 145.43 98.69 147.96 98.20 152.75 96.66 154.84 96.26 158.84 95.76 160.63 95.69 161.45 95.81 162.06 96.03 162.68 96.40 163.09 96.83 163.38 97.37 163.62 98.30 164.08 102.35 164.19 105.34 164.13 109.65 164.33 113.13 164.15 114.24 163.71 115.29 163.10 116.18 162.13 117.05 160.95 117.70 159.61 118.19 158.63 118.38 155.83 118.74 149.29 120.21 146.17 120.75 142.25 122.00 139.79 122.54 138.78 122.86 136.60 123.69 132.99 125.24 129.18 126.60 126.77 127.69 124.10 128.69 121.35 130.27 118.58 131.66 117.18 132.43 111.16 136.08 110.08 136.49 108.32 136.83Z"/></symbol></svg>
+<canvas id="net" aria-hidden="true"></canvas>
+
+<section class="s cover"><div class="in">
+<svg class="logo" role="img" aria-label="Logo do Centro Universitário UniArnaldo" viewBox="0 0 215 215"><use href="#lg"/></svg>
+<p class="inst">Centro Universitário UniArnaldo</p>
+<h1>Conecta: Marketing, saúde mental e direitos nas redes sociais</h1>
+<p class="sub">Projeto parcial · Diagnóstico com estudantes do 3º ano do Ensino Médio do Colégio Sagrado Coração de Jesus, Contagem/MG</p>
+<ul class="names"></ul>
+<p class="sub">Supervisora: Profa. Maria Alice Mendes Arcebispo<br>Belo Horizonte, 2026</p>
+</div></section>
+
+<section class="s"><div class="in">
+<h2>Contexto: a economia da atenção</h2>
+<p>Algoritmos e estratégias de persuasão personalizam anúncios e conteúdos para reter a atenção dos usuários. Para jovens em fase de transição, isso significa consumo, exposição e hiperestimulação constantes.</p>
+<div class="g">
+<div class="box"><h3>Cialdini</h3><p>Persuasão por atalhos mentais que geram respostas automáticas.</p></div>
+<div class="box"><h3>Bauman</h3><p>Modernidade líquida: vínculos voláteis e consumo como eixo da subjetividade.</p></div>
+<div class="box"><h3>Sibilia</h3><p>“Show do Eu”: a vida privada vira espetáculo em troca de validação.</p></div>
+<div class="box"><h3>Han</h3><p>Sociedade do cansaço: sobrecarga de estímulos, exaustão e ansiedade.</p></div>
+</div>
+<p class="note">Efeitos associados: distúrbios de sono, dispersão da atenção, FOMO (<i>Fear of Missing Out</i>) e dúvidas sobre privacidade e direitos digitais, como a LGPD (Lei nº 13.709/2018).</p>
+</div></section>
+
+<section class="s"><div class="in">
+<h2>Objetivos</h2>
+<div class="box" style="margin-bottom:1.2em"><h3>Objetivo geral</h3><p>Promover a conscientização dos estudantes do 3º ano sobre os impactos do marketing digital e do uso das redes sociais na saúde mental, no comportamento e nas relações sociais, incentivando o uso consciente e o conhecimento dos direitos e deveres no ambiente digital.</p></div>
+<h3>Objetivos específicos</h3>
+<ul class="l">
+<li>Apresentar as estratégias de persuasão do marketing digital e sua influência no consumo.</li>
+<li>Conscientizar sobre os efeitos das telas no sono, na atenção e no bem-estar emocional.</li>
+<li>Estimular a reflexão sobre os próprios hábitos digitais e o equilíbrio com estudos e convívio social.</li>
+<li>Orientar sobre privacidade, proteção de dados, cyberbullying e responsabilidade online.</li>
+<li>Incentivar a análise crítica de conteúdos, propagandas e informações.</li>
+</ul>
+</div></section>
+
+<section class="s"><div class="in">
+<h2>Metodologia</h2>
+<p>Pesquisa de campo quantitativa, complementada por pesquisa bibliográfica qualitativa, desenvolvida no contexto de um projeto de extensão universitária.</p>
+<ol class="l">
+<li><b>Aproximação com a escola:</b> carta de apresentação e diálogo para alinhar objetivos e procedimentos.</li>
+<li><b>Coleta de dados:</b> questionário no Google Forms com 22 perguntas fechadas sobre perfil, tempo de conexão, conteúdos, consumo, saúde mental, privacidade e cidadania digital.</li>
+<li><b>Análise e fundamentação:</b> identificação de tendências e revisão interdisciplinar em Marketing, Sociologia, Psicologia e Direito.</li>
+<li><b>Intervenção:</b> proposta de vídeo educativo sobre uso consciente das tecnologias.</li>
+</ol>
+</div></section>
+
+<section class="s"><div class="in">
+<h2>Instituição parceira e público-alvo</h2>
+<div class="g">
+<div><h3>Colégio Sagrado Coração de Jesus</h3>
+<p>Escola privada na Av. Vila Rica, nº 587, bairro Inconfidentes, Contagem/MG, com Educação Infantil ao Ensino Médio. Ensino Médio autorizado pelo Parecer CEE nº 149/2018 e pela Portaria nº 329/2018.</p>
+<p>Coordenação do projeto: Prof. Lucas Bittencourt e Xavier. Orientação: Profa. Maria Alice Mendes Arcebispo.</p></div>
+<div><h3>Por que o 3º ano do Ensino Médio</h3>
+<p>Jovens de 16 a 18 anos vivem a construção da identidade e da autonomia (Erikson e Piaget), expostos a pressões de consumo, comparação social e hiperestimulação digital.</p>
+<p>A gestão escolar reconheceu a relevância do tema e autorizou a pesquisa e as atividades educativas.</p></div>
+</div>
+</div></section>
+
+<div id="slot"></div>
+
+<section class="s"><div class="in">
+<h2>Considerações finais</h2>
+<ul class="l">
+<li><b>Presença central das redes:</b> TikTok, Instagram e WhatsApp dominam a rotina, com exposição constante a estratégias de marketing persuasivo.</li>
+<li><b>Consciência sem autorregulação:</b> os estudantes percebem efeitos no bem-estar, mas têm dificuldade de estabelecer limites ao tempo de tela.</li>
+<li><b>Privacidade na prática:</b> poucos leem os termos, conhecem a LGPD em detalhe ou ajustam as configurações de proteção.</li>
+<li><b>Eixos integrados:</b> hábitos de uso, saúde mental, consumo e privacidade são dimensões sobrepostas da experiência do adolescente na rede.</li>
+</ul>
+<p class="note">O diagnóstico fundamenta empiricamente a etapa seguinte: a intervenção educativa.</p>
+</div></section>
+
+<section class="s dark"><div class="in">
+<h2>Próxima etapa: intervenção educativa</h2>
+<p>Oficinas pedagógicas e a série de vídeos curtos <b><i>Vibe Consciente</i></b>, conduzida pelo personagem Léo Brandão, em formato de <i>Reels</i> e <i>TikTok</i> e com linguagem acessível.</p>
+<div class="g">
+<div class="box"><h3>Temas</h3><p>Consumo consciente, gatilhos de autoimagem, gestão do tempo e defesa da privacidade.</p></div>
+<div class="box"><h3>Abordagem</h3><p>Diálogo empático, sem discurso punitivo sobre as telas, com foco em alfabetização digital crítica e autonomia emocional.</p></div>
+<div class="box"><h3>ODS da ONU</h3><p>ODS 3 (Saúde e Bem-Estar), ODS 4 (Educação de Qualidade) e ODS 16 (Paz, Justiça e Instituições Eficazes).</p></div>
+</div>
+</div></section>
+
+<section class="s"><div class="in">
+<h2>Referências bibliográficas</h2>
+<p class="ref">BAUMAN, Zygmunt. <b>Modernidade líquida</b>. Rio de Janeiro: Jorge Zahar Ed., 2001.</p>
+<p class="ref">CIALDINI, Robert B. <b>As armas da persuasão</b>: como influenciar e não se deixar influenciar. Rio de Janeiro: Sextante, 2012.</p>
+<p class="ref">ERIKSON, Erik H. <b>Identidade, juventude e crise</b>. 2. ed. Rio de Janeiro: Zahar Editores, 1976.</p>
+<p class="ref">HAN, Byung-Chul. <b>Sociedade do cansaço</b>. Petrópolis: Vozes, 2015.</p>
+<p class="ref">PIAGET, Jean. <b>Seis estudos de psicologia</b>. 24. ed. Rio de Janeiro: Forense Universitária, 1999.</p>
+<p class="ref">SIBILIA, Paula. <b>O Show do eu</b>: a intimidade como espetáculo. 2. ed. rev. Rio de Janeiro: Contraponto, 2016.</p>
+</div></section>
+
+<section class="s cover"><div class="in">
+<svg class="logo" role="img" aria-label="Logo do Centro Universitário UniArnaldo" viewBox="0 0 215 215"><use href="#lg"/></svg>
+<h1>Obrigado!</h1>
+<p class="sub">Conecta: Marketing, saúde mental e direitos nas redes sociais</p>
+<ul class="names"></ul>
+<p class="sub">Centro Universitário UniArnaldo · Belo Horizonte, 2026</p>
+</div></section>
+
+<footer>
+<div id="bar"></div>
+<span id="t">Conecta · UniArnaldo</span>
+<nav><button id="p" aria-label="Slide anterior">&#8249;</button><span id="c" aria-live="polite"></span><button id="n" aria-label="Próximo slide">&#8250;</button></nav>
+</footer>
+
+<script>
+const NAMES=["Alice Efigênia Francisco Zanandrez","Ana Luiza de Oliveira Divino","Brenda Silva Armani","Bruna Rodrigues Dias","Cecília Gabrielle Rodrigues Ignacchiti","Ester Alves do Carmo Santiago","Desirée de Oliveira Neves Pompeu","Maria Clara de Oliveira de Menezes","Marilene Martins de Brito"];
+const $=id=>document.getElementById(id),RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const fm=v=>String(v).replace(".",","),C=251.33,P=["#0098d8","#0a5c8a","#7ccbef","#14293b","#bfe6f6","#4f7fa3"];
+function donut(c){let o=0;const top=c.d.reduce((a,b)=>b[1]>a[1]?b:a);
+  const arcs=c.d.map((r,k)=>{const l=r[1]/100*C,s=`<circle cx="50" cy="50" r="40" stroke="${P[k]}" stroke-dasharray="${(l-.8).toFixed(2)} ${(C-l+.8).toFixed(2)}" stroke-dashoffset="${-o.toFixed(2)}" style="--d:${k}"/>`;o+=l;return s}).join("");
+  return `<div class="pn"><h3>${c.t}</h3><div class="dn"><svg class="d" viewBox="0 0 100 100" role="img" aria-label="${c.t}">${arcs}<text x="50" y="55" text-anchor="middle">${fm(top[1])}%</text></svg><ul class="lg">${c.d.map((r,k)=>`<li style="--c:${P[k]}">${r[0]} <b>${fm(r[1])}%</b></li>`).join("")}</ul></div></div>`}
+function bars(c){return `<div class="pn"><h3>${c.t}</h3>${c.d.map((r,k)=>`<div class="b"><span>${r[0]}</span><i style="--v:${r[1]};--d:${k}"></i><em>${fm(r[1])}%</em></div>`).join("")}</div>`}
+function txt(c){return `<div class="pn"><h3>${c.t}</h3><ul class="l">${c.d.map(x=>`<li>${x}</li>`).join("")}</ul></div>`}
+const F={d:donut,b:bars,x:txt};
+const D=[
+{t:"Perfil da amostra: quem respondeu",n:"21 estudantes do 3º ano responderam ao questionário pelo Google Forms.",c:[
+ {k:"d",t:"Gênero",d:[["Feminino",52.4],["Masculino",47.6]]},
+ {k:"d",t:"Idade",d:[["17 anos",52.4],["18 anos ou mais",47.6]]},
+ {k:"d",t:"Cor ou raça",d:[["Branca",47.6],["Parda",42.9],["Preta",4.8],["Amarela",4.8]]}]},
+{t:"Perfil da amostra: moradia e renda",n:"A maioria mora em Contagem e com ambos os pais ou responsáveis. 61,9% têm renda familiar acima de 3 salários mínimos.",c:[
+ {k:"d",t:"Cidade onde mora",d:[["Contagem",76.2],["Betim",14.3],["Belo Horizonte",4.8],["Ribeirão das Neves",4.8]]},
+ {k:"b",t:"Renda familiar mensal",d:[["Mais de 5 salários mínimos",42.9],["Mais de 3 até 5",19],["Mais de 2 até 3",19],["Não sabe ou prefere não informar",9.5],["Mais de 1 até 2",4.8],["Até 1 salário mínimo",4.8]]},
+ {k:"d",t:"Com quem mora",d:[["Ambos os pais ou responsáveis",66.7],["Apenas mãe ou responsável",23.8],["Outros familiares",4.8],["Sozinho(a)",4.8]]}]},
+{t:"Rotina além da escola",n:"42,9% trabalham ou fazem estágio, e 38,1% dedicam mais de 4 horas por dia a essas atividades.",c:[
+ {k:"b",t:"Atividade regular que ocupa muitas horas",d:[["Trabalho ou estágio remunerado",42.9],["Nenhuma dessas alternativas",28.6],["Esportes, música, teatro",23.8],["Curso preparatório, idiomas, técnico",23.8]]},
+ {k:"d",t:"Horas por dia nessas atividades",d:[["1 a 2 horas",47.6],["Mais de 4 horas",38.1],["2 a 3 horas",9.5],["3 a 4 horas",4.8]]}]},
+{t:"Redes sociais: quais e por quanto tempo",n:"TikTok, Instagram e WhatsApp dominam a rotina digital dos estudantes.",c:[
+ {k:"b",t:"Redes mais usadas (múltipla escolha)",d:[["TikTok",81],["Instagram",76.2],["WhatsApp",71.4],["YouTube e Shorts",23.8],["X (antigo Twitter)",14.3]]},
+ {k:"d",t:"Horas conectado por dia",d:[["Entre 4 e 6 horas",42.9],["Menos de 2 horas",19],["Entre 2 e 4 horas",19],["Mais de 6 horas",19]]}]},
+{raw:`<section class="s dark"><div class="in" style="text-align:center"><p class="sub">Tempo de conexão diária</p><div class="big"><span class="cnt" data-v="61.9">61,9</span>%</div><p class="lead" style="margin-inline:auto">dos estudantes ficam conectados 4 horas ou mais por dia.</p><div class="g"><div class="k"><b>42,9%</b><span>ficam entre 4 e 6 horas</span></div><div class="k"><b>19%</b><span>passam de 6 horas</span></div></div></div></section>`},
+{t:"Conteúdos consumidos e influência no consumo",n:"57,1% sentem-se influenciados às vezes a comprar o que veem; 14,3%, sempre ou quase sempre.",c:[
+ {k:"b",t:"Conteúdos e perfis mais seguidos",d:[["Humor, memes e entretenimento",81],["Estilo de vida, moda e beleza",61.9],["Educação, ciência e estudos",23.8],["Games e criadores de jogos",19],["Marcas, lojas e anúncios",19],["Religião",4.8]]},
+ {k:"d",t:"Influência para comprar",d:[["Às vezes",57.1],["Sempre ou quase sempre",14.3],["Raramente",14.3],["Nunca",14.3]]}]},
+{t:"Pressão para consumir e efeitos no bem-estar",n:"33,3% sentem pressão às vezes. 81% percebem alterações no sono, no humor ou na concentração.",c:[
+ {k:"d",t:"Pressão para adquirir algo",d:[["Raramente",42.9],["Às vezes",33.3],["Nunca",19],["Com frequência",4.8]]},
+ {k:"d",t:"Alterações no sono, humor ou concentração",d:[["Às vezes",52.4],["Frequentemente",28.6],["Raras vezes",14.3],["Nunca",4.8]]}]},
+{t:"Comparação social e desconexão",n:"52,4% se comparam com frequência. Sem o celular, 61,9% sentem tédio e 23,8% ficam sem grandes preocupações.",c:[
+ {k:"d",t:"Se compara com a vida dos outros",d:[["Às vezes",42.9],["Raramente",23.8],["Nunca",23.8],["Sempre",9.5]]},
+ {k:"b",t:"Ao ficar sem celular ou redes",d:[["Sente tédio",61.9],["Consegue ficar sem telas",23.8],["Sente descanso mental",9.5],["Sente ansiedade ou angústia",4.8]]}]},
+{t:"Privacidade e direitos digitais",n:"95,3% raramente ou nunca verificam termos de uso. Só 23,8% dizem conhecer bem seus direitos na internet.",c:[
+ {k:"d",t:"Verifica termos e políticas de privacidade",d:[["Nunca se preocupou",52.4],["Raramente presta atenção",42.9],["Sempre lê",4.8]]},
+ {k:"d",t:"Conhece seus direitos na internet",d:[["Ouviu falar, sem detalhes",47.6],["Conhece bem",23.8],["Conhece parcialmente",19],["Não conhece",9.5]]}]},
+{t:"Proteção de dados na prática",n:"Evitar expor crianças é a prática mais citada. Ajustes técnicos de privacidade são raros.",c:[
+ {k:"b",t:"Ações de proteção (múltipla escolha)",d:[["Evita expor imagem de crianças",47.6],["Raramente muda configurações padrão",33.3],["Já exigiu exclusão de dados",28.6],["Verifica quem patrocina conteúdos",19],["Usa bloqueadores ou ajustes estritos",9.5]]},
+ {k:"d",t:"Sabe que os apps coletam seus dados?",d:[["Sabe e configura a privacidade",52.4],["Sabe, mas sente pouco controle",33.3],["Nunca parou para pensar",14.3]]}]},
+{t:"Informação e pensamento crítico",n:"Confiar em perfis conhecidos não garante veracidade.",c:[
+ {k:"d",t:"Antes de acreditar ou compartilhar",d:[["Pesquisa a fonte original",38.1],["Leitura rápida, confia em fontes conhecidas",28.6],["Lê e repassa se achou interessante",19],["Não costuma compartilhar",14.3]]},
+ {k:"x",t:"Competências a desenvolver",d:["Diferenciar opinião de fato","Identificar conteúdo publicitário","Reconhecer tentativas de manipulação","Verificar fontes antes de compartilhar"]}]},
+{t:"Síntese dos indicadores",n:"Percentuais de estudantes em cada situação. Alguns valores somam categorias de resposta.",c:[
+ {k:"b",t:"Principais achados do diagnóstico",d:[["Raramente ou nunca verificam termos de uso",95.3],["Percebem alterações no bem-estar",81],["Influenciados a comprar (às vezes ou mais)",71.4],["Ficam conectados 4 horas ou mais por dia",61.9],["Sentem tédio sem o celular",61.9],["Se comparam com outros (às vezes ou mais)",52.4],["Conhecem bem seus direitos digitais",23.8]]}]}
+];
+const slides=D.map(s=>s.raw||`<section class="s"><div class="in"><h2>${s.t}</h2><p class="sub">${s.n}</p><div class="g">${s.c.map(c=>F[c.k](c)).join("")}</div></div></section>`).join("");
+$("slot").insertAdjacentHTML("beforebegin",slides);
+document.querySelectorAll(".names").forEach(u=>u.innerHTML=NAMES.map(n=>"<li>"+n+"</li>").join(""));
+const S=[...document.querySelectorAll(".s")];
+S.forEach(s=>s.querySelectorAll(".in>*:not(.g):not(.logo),.g>*,.in>ul>li,.in>ol>li").forEach((e,k)=>{e.classList.add("a");e.style.setProperty("--d",k)}));
+function count(s){s.querySelectorAll(".cnt").forEach(e=>{const v=+e.dataset.v,t0=performance.now();(function f(t){const p=RM?1:Math.min(1,(t-t0)/1500);e.textContent=fm(+(v*(1-Math.pow(1-p,3))).toFixed(1));if(p<1)requestAnimationFrame(f)})(t0)})}
+let i=0;
+function go(k){
+  i=Math.max(0,Math.min(S.length-1,k));
+  S.forEach((s,j)=>{s.classList.toggle("on",j===i);s.inert=j!==i;if(j===i){s.scrollTop=0;count(s)}});
+  $("c").textContent=(i+1)+" / "+S.length;
+  $("bar").style.width=((i+1)/S.length*100)+"%";
+  $("p").disabled=i===0;$("n").disabled=i===S.length-1;
+}
+$("p").onclick=()=>go(i-1);
+$("n").onclick=()=>go(i+1);
+document.addEventListener("keydown",e=>{
+  const s=S[i],sc=s.scrollHeight>s.clientHeight;
+  if(e.key==="ArrowRight"||(e.key==="ArrowDown"&&!sc)){e.preventDefault();go(i+1)}
+  else if(e.key==="ArrowLeft"||(e.key==="ArrowUp"&&!sc)){e.preventDefault();go(i-1)}
+});
+go(0);
+const cv=$("net"),x=cv.getContext("2d");let W,H,pts=[];
+function rs(){const r=devicePixelRatio||1;W=innerWidth;H=innerHeight;cv.width=W*r;cv.height=H*r;x.setTransform(r,0,0,r,0,0);
+  pts=Array.from({length:Math.round(W*H/24000)},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25}));if(RM)dr()}
+function dr(){x.clearRect(0,0,W,H);
+  for(const p of pts){p.x=(p.x+p.vx+W)%W;p.y=(p.y+p.vy+H)%H}
+  for(let a=0;a<pts.length;a++){const p=pts[a];x.fillStyle="rgba(0,152,216,.45)";x.beginPath();x.arc(p.x,p.y,2.2,0,6.283);x.fill();
+    for(let b=a+1;b<pts.length;b++){const q=pts[b],d=Math.hypot(p.x-q.x,p.y-q.y);if(d<150){x.strokeStyle="rgba(0,152,216,"+(.22*(1-d/150))+")";x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke()}}}
+  if(!RM)requestAnimationFrame(dr)}
+addEventListener("resize",rs);rs();if(!RM)dr();
+</script>
+</body>
+</html>
