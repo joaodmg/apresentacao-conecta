@@ -10,7 +10,10 @@
 :root{color-scheme:light;--b:#0098d8;--bt:#0885c0;--bd:#0a5c8a;--ice:#eaf6fd;--sky:#bfe6f6;--ink:#14293b;--mute:#4d6a80;--line:#cfe7f5;--serif:"Source Serif 4",Georgia,"Times New Roman",serif;--sans:"Source Sans 3",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
-body{font:clamp(15px,1.45vw,19px)/1.6 var(--sans);color:var(--ink);overflow:hidden;background:linear-gradient(160deg,#fff 0%,var(--ice) 55%,#d3ecf9 100%)}
+body{font:clamp(15px,1.45vw,19px)/1.6 var(--sans);color:var(--ink);overflow:hidden;background:linear-gradient(160deg,#fff 0%,var(--ice) 55%,#d3ecf9 100%);transition:background .35s ease,color .35s ease}
+/* O modo escuro altera o gradiente-base, mas mantém a camada animada de constelações. */
+body.night-mode{background:linear-gradient(160deg,#06111f 0%,#071b2c 55%,#0a2b40 100%);color:#e7f0f5}
+body.night-mode #net{filter:brightness(1.75) saturate(1.25)}
 #net{position:fixed;inset:0;width:100%;height:100%;z-index:0}
 body::before,body::after{content:"";position:fixed;border-radius:50%;filter:blur(70px);z-index:0;pointer-events:none}
 body::before{width:46vmax;height:46vmax;right:-14vmax;top:-18vmax;background:rgba(0,152,216,.22);animation:fl 18s ease-in-out infinite alternate}
@@ -79,7 +82,32 @@ button{width:42px;height:42px;border-radius:50%;border:0;background:var(--b);col
 button:hover:not(:disabled){background:var(--bd);transform:scale(1.07)}
 button:disabled{background:var(--sky);cursor:default}
 button:focus-visible{outline:3px solid var(--bd);outline-offset:2px}
-@media(max-width:560px){.b{grid-template-columns:1fr 50px}.b span{grid-column:1/-1}.s{padding-bottom:80px}#t{display:none}}
+#themeToggle{width:auto;height:38px;padding:0 12px;border-radius:22px;font:600 14px/1 var(--sans);white-space:nowrap}
+/* O modo escuro altera apenas a leitura do conteúdo textual e os cartões informativos.
+   O gradiente de fundo, as partículas, a logo, os slides azuis e os gráficos (.pn) permanecem intactos. */
+body.night-mode .s:not(.dark) .in{color:#e7f0f5}
+body.night-mode .s:not(.dark) .in>.inst,
+body.night-mode .s:not(.dark) .in>.sub{color:#bfd7e5}
+body.night-mode .s:not(.dark) .in>.note{color:#bfd7e5;border-top-color:rgba(191,230,246,.28)}
+body.night-mode .s:not(.dark) .box{background:rgba(10,39,57,.88);border-left-color:#49bce7}
+body.night-mode .s:not(.dark) .box h3,
+body.night-mode .s:not(.dark) .in>h3,
+body.night-mode .s:not(.dark) .g>div:not(.pn) h3{color:#aee5fb}
+/* Os cartões dos gráficos também entram no modo escuro; cores de barras e fatias são preservadas. */
+body.night-mode .pn{
+  background:rgba(7,24,39,.94);
+  border-color:rgba(125,196,225,.38);
+  color:#e7f0f5;
+  box-shadow:0 8px 24px rgba(0,0,0,.12);
+}
+body.night-mode .pn h3{color:#aee5fb}
+body.night-mode .pn .lg b{color:#aee5fb}
+body.night-mode .pn .d text{fill:#e7f0f5}
+body.night-mode .pn .b em{color:#aee5fb}
+body.night-mode .pn .b i{background:rgba(191,230,246,.16)}
+/* O rodapé acompanha o tema; cores de barras, fatias e logo permanecem originais. */
+body.night-mode footer{background:rgba(4,18,31,.92);color:#bfd7e5;border-top-color:rgba(191,230,246,.24)}
+@media(max-width:560px){.b{grid-template-columns:1fr 50px}.b span{grid-column:1/-1}.s{padding-bottom:80px}#t{display:none}nav{gap:8px}#themeToggle{height:36px;padding:0 9px;font-size:12px}}
 @media(prefers-reduced-motion:reduce){*,::before,::after{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -189,7 +217,7 @@ button:focus-visible{outline:3px solid var(--bd);outline-offset:2px}
 <footer>
 <div id="bar"></div>
 <span id="t">Conecta · UniArnaldo</span>
-<nav><button id="p" aria-label="Slide anterior">&#8249;</button><span id="c" aria-live="polite"></span><button id="n" aria-label="Próximo slide">&#8250;</button></nav>
+<nav><button id="themeToggle" type="button" aria-label="Ativar modo escuro" aria-pressed="false" title="Ativar modo escuro">Modo escuro</button><button id="p" aria-label="Slide anterior">&#8249;</button><span id="c" aria-live="polite"></span><button id="n" aria-label="Próximo slide">&#8250;</button></nav>
 </footer>
 
 <script>
@@ -255,6 +283,15 @@ function go(k){
 }
 $("p").onclick=()=>go(i-1);
 $("n").onclick=()=>go(i+1);
+const themeToggle=$("themeToggle");
+function setNightMode(enabled){
+  document.body.classList.toggle("night-mode",enabled);
+  themeToggle.textContent=enabled?"Modo claro":"Modo escuro";
+  themeToggle.setAttribute("aria-label",enabled?"Desativar modo escuro":"Ativar modo escuro");
+  themeToggle.setAttribute("title",enabled?"Desativar modo escuro":"Ativar modo escuro");
+  themeToggle.setAttribute("aria-pressed",String(enabled));
+}
+themeToggle.addEventListener("click",()=>setNightMode(!document.body.classList.contains("night-mode")));
 document.addEventListener("keydown",e=>{
   const s=S[i],sc=s.scrollHeight>s.clientHeight;
   if(e.key==="ArrowRight"||(e.key==="ArrowDown"&&!sc)){e.preventDefault();go(i+1)}
